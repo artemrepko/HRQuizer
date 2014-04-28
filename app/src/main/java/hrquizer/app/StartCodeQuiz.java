@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -38,8 +39,9 @@ public class StartCodeQuiz extends Activity {
                 Intent intent = new Intent(StartCodeQuiz.this, StartAsk.class);
                 startActivity(intent);
                 finish();
+            } else {
+                if (i == quizCodeArrayList.size()-1) Toast.makeText(this, "Опроса с данным кодом не существует", Toast.LENGTH_SHORT).show();
             }
-
         }
     }
 }

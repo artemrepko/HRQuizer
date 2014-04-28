@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -34,6 +35,8 @@ public class Authorization extends Activity {
                 Intent intent = new Intent(Authorization.this, MainMenu.class);
                 startActivity(intent);
                 finish();
+            } else {
+                if (i == userArrayList.size()-1) Toast.makeText(this, "Данный акаунт не зарегестрирован", Toast.LENGTH_SHORT).show();
             }
         }
     }
