@@ -18,6 +18,8 @@ public class StartCodeQuiz extends Activity {
     public QuizCode quizCode = new QuizCode(MainMenu.workquiz,12345);
     public ArrayList<QuizCode> quizCodeArrayList = new ArrayList<QuizCode>();
 
+    public int myCode;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,9 +31,11 @@ public class StartCodeQuiz extends Activity {
 
     public void startQuizCode(View v) {
 
-        EditText editText = (EditText) findViewById(R.id.textCode);
-        String textCode = editText.getText().toString();
-        int myCode = Integer.parseInt(textCode);
+        try {
+            readCode();
+        } catch (MyException e) {
+            Toast.makeText(this, "Неверный формат кода", Toast.LENGTH_SHORT).show();
+        }
 
         for (int i=0; i<quizCodeArrayList.size(); i++) {
 
@@ -40,8 +44,18 @@ public class StartCodeQuiz extends Activity {
                 startActivity(intent);
                 finish();
             } else {
-                if (i == quizCodeArrayList.size()-1) Toast.makeText(this, "Опроса с данным кодом не существует", Toast.LENGTH_SHORT).show();
+                if (i == quizCodeArrayList.size()-1)
+                    Toast.makeText(this, "Опроса с данным кодом не существует", Toast.LENGTH_SHORT).show();
             }
+        }
+    }
+
+    public void readCode() throws MyException {
+        EditText editText = (EditText) findViewById(R.id.textCode);
+        String textCode = editText.getText().toString();
+        myCode = Integer.parseInt(textCode);
+        if (myCode < 0) {
+            throw new MyException();
         }
     }
 }
