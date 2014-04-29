@@ -19,9 +19,9 @@ public class MainMenu extends Activity {
     private final int IDD_EXIT = 0;
 
     static public Quiz workquiz = new Quiz();
-    public Answer answer1 = new Answer("Ansver 1",0);
-    public Answer answer2 = new Answer("Ansver 2",1);
-    public Answer answer3 = new Answer("Ansver 3",2);
+    public Answer answer1 = new Answer("Answer 1",0);
+    public Answer answer2 = new Answer("Answer 2",1);
+    public Answer answer3 = new Answer("Answer 3",2);
     public ArrayList<Answer> answerArrayList = new ArrayList<Answer>();
     public ArrayList<Ask> askArrayList = new ArrayList<Ask>();
 
@@ -46,7 +46,7 @@ public class MainMenu extends Activity {
 
         workquiz.setAsks(askArrayList);
 
-        Log.e("MY_LOG", workquiz.getName());
+        /*Log.e("MY_LOG", workquiz.getName());
         Log.e("MY_LOG", Integer.toString(workquiz.getId()));
 
 
@@ -55,7 +55,7 @@ public class MainMenu extends Activity {
             Log.e("MY_LOG", workquiz.getAsk(i).getAnswer(0).getText());
             Log.e("MY_LOG", workquiz.getAsk(i).getAnswer(1).getText());
             Log.e("MY_LOG", workquiz.getAsk(i).getAnswer(2).getText());
-        }
+        }*/
     }
 
     public void toCodeQuiz(View v) {
