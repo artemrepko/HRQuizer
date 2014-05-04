@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -33,7 +32,7 @@ public class StartCodeQuiz extends Activity {
 
         try {
             readCode();
-        } catch (MyException e) {
+        } catch (MinusInCodeException e) {
             Toast.makeText(this, "Неверный формат кода", Toast.LENGTH_SHORT).show();
         }
 
@@ -50,12 +49,12 @@ public class StartCodeQuiz extends Activity {
         }
     }
 
-    public void readCode() throws MyException {
+    public void readCode() throws MinusInCodeException {
         EditText editText = (EditText) findViewById(R.id.textCode);
         String textCode = editText.getText().toString();
         myCode = Integer.parseInt(textCode);
         if (myCode < 0) {
-            throw new MyException();
+            throw new MinusInCodeException();
         }
     }
 }

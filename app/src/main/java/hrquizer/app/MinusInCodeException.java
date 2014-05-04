@@ -3,9 +3,9 @@ package hrquizer.app;
 /**
  * Created by artem on 29.04.14.
  */
-public class MyException extends Exception {
+public class MinusInCodeException extends Exception {
 
-    public MyException() {}
+    public MinusInCodeException() {}
 
     @Override
     public String toString() {
