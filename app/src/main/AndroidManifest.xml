@@ -6,6 +6,10 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name" >
+        <provider
+            android:authorities="hrquizer.app"
+            android:name=".DBHelperProvider">
+        </provider>
         <activity android:theme="@android:style/Theme.Light.NoTitleBar"
             android:name="hrquizer.app.StartApp"
             android:label="@string/app_name" >
