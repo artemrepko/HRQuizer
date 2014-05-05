@@ -13,8 +13,31 @@ import android.text.TextUtils;
 public class DBHelperProvider extends ContentProvider {
 
     static final Uri CONTENT_URI = Uri.parse("content://hrquizer.app/quizerdb");
+
+    public static String CATEGORYIES = "Categories";
     public static String CATEGORY_NAME = "categoryname";
-    public static String CATEGORY_ID = "_id";
+
+    public static String QUIZERS = "Quizers";
+    public static String QUIZ_NAME = "name";
+    public static String CODE = "code";
+    public static String CATEGORY_ID = "category_id";
+    public static String USER_ID = "user_id";
+    public static String TYPEREPORT = "typereport";
+
+    public static String ASKS = "Asks";
+    public static String ASK = "Ask";
+    public static String ANSWER_1 = "answer_1";
+    public static String ANSWER_2 = "answer_2";
+    public static String ANSWER_3 = "answer_3";
+    public static String CREDITS_1 = "credits_1";
+    public static String CREDITS_2 = "credits_2";
+    public static String CREDITS_3 = "credits_3";
+    public static String QUIZER_ID = "quizer_id";
+
+    public static String USERS = "Users";
+    public static String LOGIN = "login";
+    public static String PASSWORD = "password";
+
     private SQLiteDatabase db;
 
     @Override
@@ -59,48 +82,4 @@ public class DBHelperProvider extends ContentProvider {
         return 0;
     }
 
-    public Cursor queryCategory(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) {
-        String orderBy;
-
-        if (TextUtils.isEmpty(sortOrder)) {
-            orderBy = DBHelper.CATEGORY_NAME;
-        } else {
-            orderBy = sortOrder;
-        }
-
-        Cursor c = db.query(DBHelper.CATEGORYIES, projection, selection, selectionArgs, null, null, orderBy);
-        c.setNotificationUri(getContext().getContentResolver(), uri);
-
-        return c;
-    }
-
-    public Cursor queryQuiz(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) {
-        String orderBy;
-
-        if (TextUtils.isEmpty(sortOrder)) {
-            orderBy = DBHelper.QUIZ_NAME;
-        } else {
-            orderBy = sortOrder;
-        }
-
-        Cursor c = db.query(DBHelper.QUIZERS, projection, selection, selectionArgs, null, null, orderBy);
-        c.setNotificationUri(getContext().getContentResolver(), uri);
-
-        return c;
-    }
-
-    public Cursor queryAsk(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) {
-        String orderBy;
-
-        if (TextUtils.isEmpty(sortOrder)) {
-            orderBy = DBHelper.ASK;
-        } else {
-            orderBy = sortOrder;
-        }
-
-        Cursor c = db.query(DBHelper.ASKS, projection, selection, selectionArgs, null, null, orderBy);
-        c.setNotificationUri(getContext().getContentResolver(), uri);
-
-        return c;
-    }
 }
