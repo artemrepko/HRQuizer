@@ -25,7 +25,6 @@ public class DBHelperProvider extends ContentProvider {
 
     @Override
     public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) {
-
         String orderBy;
 
         if (TextUtils.isEmpty(sortOrder)) {
@@ -58,5 +57,50 @@ public class DBHelperProvider extends ContentProvider {
     @Override
     public int update(Uri uri, ContentValues values, String selection, String[] selectionArgs) {
         return 0;
+    }
+
+    public Cursor queryCategory(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) {
+        String orderBy;
+
+        if (TextUtils.isEmpty(sortOrder)) {
+            orderBy = DBHelper.CATEGORY_NAME;
+        } else {
+            orderBy = sortOrder;
+        }
+
+        Cursor c = db.query(DBHelper.CATEGORYIES, projection, selection, selectionArgs, null, null, orderBy);
+        c.setNotificationUri(getContext().getContentResolver(), uri);
+
+        return c;
+    }
+
+    public Cursor queryQuiz(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) {
+        String orderBy;
+
+        if (TextUtils.isEmpty(sortOrder)) {
+            orderBy = DBHelper.QUIZ_NAME;
+        } else {
+            orderBy = sortOrder;
+        }
+
+        Cursor c = db.query(DBHelper.QUIZERS, projection, selection, selectionArgs, null, null, orderBy);
+        c.setNotificationUri(getContext().getContentResolver(), uri);
+
+        return c;
+    }
+
+    public Cursor queryAsk(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) {
+        String orderBy;
+
+        if (TextUtils.isEmpty(sortOrder)) {
+            orderBy = DBHelper.ASK;
+        } else {
+            orderBy = sortOrder;
+        }
+
+        Cursor c = db.query(DBHelper.ASKS, projection, selection, selectionArgs, null, null, orderBy);
+        c.setNotificationUri(getContext().getContentResolver(), uri);
+
+        return c;
     }
 }

@@ -13,8 +13,30 @@ public class DBHelper extends SQLiteOpenHelper implements BaseColumns {
 
     public static int VERSION = 1;
     public static String DB_NAME = "hrquizerdb.db";
+
     public static String CATEGORYIES = "Categories";
     public static String CATEGORY_NAME = "categoryname";
+
+    public static String QUIZERS = "Quizers";
+    public static String QUIZ_NAME = "name";
+    public static String CODE = "code";
+    public static String CATEGORY_ID = "category_id";
+    public static String USER_ID = "user_id";
+    public static String TYPEREPORT = "typereport";
+
+    public static String ASKS = "Asks";
+    public static String ASK = "Ask";
+    public static String ANSWER_1 = "answer_1";
+    public static String ANSWER_2 = "answer_2";
+    public static String ANSWER_3 = "answer_3";
+    public static String CREDITS_1 = "credits_1";
+    public static String CREDITS_2 = "credits_2";
+    public static String CREDITS_3 = "credits_3";
+    public static String QUIZER_ID = "quizer_id";
+
+    public static String USERS = "Users";
+    public static String LOGIN = "login";
+    public static String PASSWORD = "password";
 
     public DBHelper(Context context) {
         super(context, DB_NAME, null, VERSION);
