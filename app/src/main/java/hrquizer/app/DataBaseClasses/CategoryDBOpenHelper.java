@@ -13,7 +13,7 @@ import android.provider.BaseColumns;
 public class CategoryDBOpenHelper extends SQLiteOpenHelper implements BaseColumns {
 
     public static int VERSION = 1;
-    public static String DB_NAME = "hrquizerdb.db";
+    public static String DB_NAME = "hrquizer_category.db";
 
     public static String CATEGORIES = "Categories";
     public static String CATEGORY_NAME = "categoryname";

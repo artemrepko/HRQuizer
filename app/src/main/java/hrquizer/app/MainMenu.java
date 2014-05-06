@@ -46,16 +46,6 @@ public class MainMenu extends Activity {
 
         workquiz.setAsks(askArrayList);
 
-        /*Log.e("MY_LOG", workquiz.getName());
-        Log.e("MY_LOG", Integer.toString(workquiz.getId()));
-
-
-        for (int i=0; i<workquiz.getAsks().size(); i++) {
-            Log.e("MY_LOG", workquiz.getAsk(i).getQuestion());
-            Log.e("MY_LOG", workquiz.getAsk(i).getAnswer(0).getText());
-            Log.e("MY_LOG", workquiz.getAsk(i).getAnswer(1).getText());
-            Log.e("MY_LOG", workquiz.getAsk(i).getAnswer(2).getText());
-        }*/
     }
 
     public void toCodeQuiz(View v) {

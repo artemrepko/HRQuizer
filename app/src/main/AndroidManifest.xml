@@ -7,8 +7,12 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name" >
         <provider
-            android:authorities="hrquizer.app.DataBaseClasses"
+            android:authorities="hrquizer.app.DataBaseClasses.CategoryDBOpenHelper"
             android:name=".DataBaseClasses.CategoryDBProvider">
+        </provider>
+        <provider
+            android:authorities="hrquizer.app.DataBaseClasses.QuizDBOpenHelper"
+            android:name=".DataBaseClasses.QuizDBProvider">
         </provider>
         <activity android:theme="@android:style/Theme.Light.NoTitleBar"
             android:name="hrquizer.app.StartApp"

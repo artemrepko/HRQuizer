@@ -1,33 +1,38 @@
 package hrquizer.app.DataBaseClasses;
 
 import android.content.ContentProvider;
+import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
-import android.util.Log;
+
+import hrquizer.app.CategoryAdapter;
+import hrquizer.app.QuizAdapter;
 
 /**
  * Created by artem on 06.05.14.
  */
-public class CategoryDBProvider extends ContentProvider {
+public class QuizDBProvider extends ContentProvider {
 
-    public static String CATEGORIES = "Categories";
-    public static String CATEGORY_NAME = "categoryname";
+    static final Uri CONTENT_URI = Uri.parse("content://hrquizer.app.DataBaseClasses/quizerdb");
+
+    public static String QUIZERS = "Quizers";
+    public static String QUIZ_NAME = "quizname";
 
     SQLiteDatabase sqLiteDatabase;
 
     @Override
     public boolean onCreate() {
-        sqLiteDatabase = new CategoryDBOpenHelper(getContext()).getWritableDatabase();
+        sqLiteDatabase = new QuizDBOpenHelper(getContext()).getWritableDatabase();
         return true;
     }
 
     @Override
     public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) {
-        String orderBy = CATEGORY_NAME;
+        String orderBy = QUIZ_NAME;
 
-        Cursor cursor = sqLiteDatabase.query(CategoryDBOpenHelper.CATEGORIES, projection, selection, selectionArgs, null, null, orderBy);
+        Cursor cursor = sqLiteDatabase.query(QuizDBOpenHelper.QUIZERS, projection, selection, selectionArgs, null, null, orderBy);
         cursor.setNotificationUri(getContext().getContentResolver(), uri);
 
         return cursor;
@@ -52,5 +57,4 @@ public class CategoryDBProvider extends ContentProvider {
     public int update(Uri uri, ContentValues values, String selection, String[] selectionArgs) {
         return 0;
     }
-
 }

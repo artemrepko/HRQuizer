@@ -17,6 +17,7 @@ import android.widget.SimpleCursorAdapter;
 
 import java.util.ArrayList;
 
+import hrquizer.app.DataBaseClasses.CategoryDBOpenHelper;
 import hrquizer.app.DataBaseClasses.CategoryDBProvider;
 
 /**
@@ -24,14 +25,13 @@ import hrquizer.app.DataBaseClasses.CategoryDBProvider;
  */
 public class StartCategoryQuiz extends Activity implements AdapterView.OnItemClickListener {
 
-    static final Uri CONTENT_URI = Uri.parse("content://hrquizer.app.DataBaseClasses/quizerdb");
+    static final Uri CONTENT_URI = Uri.parse("content://hrquizer.app.DataBaseClasses.CategoryDBOpenHelper/category");
 
-    public static String CATEGORYIES = "Categories";
+    public static String CATEGORIES = "Categories";
     public static String CATEGORY_NAME = "categoryname";
 
     public ArrayList<Category> categoryArrayList = new ArrayList<Category>();
 
-    SQLiteDatabase db;
     CategoryAdapter categoryAdapter;
     ContentResolver mContent;
     Cursor mCursor;
@@ -41,8 +41,8 @@ public class StartCategoryQuiz extends Activity implements AdapterView.OnItemCli
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category_menu);
 
-        mContent = this.getContentResolver();
-        final String[] projection = new String[] {CATEGORY_NAME};
+        mContent = getContentResolver();
+        final String[] projection = new String[] {CategoryDBOpenHelper.CATEGORY_NAME};
         mCursor = mContent.query(CONTENT_URI, projection, null, null, null);
         mCursor.moveToFirst();
 
@@ -52,6 +52,7 @@ public class StartCategoryQuiz extends Activity implements AdapterView.OnItemCli
             Log.e("MY_LOG", Integer.toString(mCursor.getPosition()));
             mCursor.moveToNext();
         } while (!mCursor.isAfterLast());
+        mCursor.close();
 
         categoryAdapter = new CategoryAdapter(this, categoryArrayList);
         ListView categoryList = (ListView) findViewById(R.id.list_view_category);
