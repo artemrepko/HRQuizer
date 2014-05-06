@@ -13,12 +13,21 @@ public class Quiz {
 
     protected ArrayList<Ask> asks;
 
-    public Quiz() {}
+    protected String typereport;
 
-    public Quiz(int id, String name, ArrayList<Ask> asks) {
-        this.id = id;
+    public Quiz() {
+        this.typereport = "noreport";
+    }
+
+    public Quiz(String name) {
+        this.name = name;
+        this.typereport = "noreport";
+    }
+
+    public Quiz(String name, ArrayList<Ask> asks) {
         this.name = name;
         this.asks = asks;
+        this.typereport = "noreport";
     }
 
     public int getId() {
@@ -33,6 +42,10 @@ public class Quiz {
         return asks;
     }
 
+    public String getTypereport() {
+        return typereport;
+    }
+
     public void setId(int id) {
         this.id = id;
     }
@@ -43,6 +56,10 @@ public class Quiz {
 
     public void setAsks(ArrayList<Ask> asks) {
         this.asks = asks;
+    }
+
+    public void setTypereport(String typereport) {
+        this.typereport = typereport;
     }
 
     public Ask getAsk(int position) {

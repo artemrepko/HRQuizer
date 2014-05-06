@@ -17,16 +17,21 @@ import android.widget.SimpleCursorAdapter;
 
 import java.util.ArrayList;
 
+import hrquizer.app.DataBaseClasses.CategoryDBProvider;
+
 /**
  * Created by artem on 28.04.14.
  */
 public class StartCategoryQuiz extends Activity implements AdapterView.OnItemClickListener {
 
-    static final Uri CONTENT_URI = Uri.parse("content://hrquizer.app/quizerdb");
+    static final Uri CONTENT_URI = Uri.parse("content://hrquizer.app.DataBaseClasses/quizerdb");
+
+    public static String CATEGORYIES = "Categories";
     public static String CATEGORY_NAME = "categoryname";
 
     public ArrayList<Category> categoryArrayList = new ArrayList<Category>();
 
+    SQLiteDatabase db;
     CategoryAdapter categoryAdapter;
     ContentResolver mContent;
     Cursor mCursor;
@@ -37,9 +42,8 @@ public class StartCategoryQuiz extends Activity implements AdapterView.OnItemCli
         setContentView(R.layout.activity_category_menu);
 
         mContent = this.getContentResolver();
-        final String[] projection = new String[] {DBHelperProvider.CATEGORY_NAME};
-        final int[] to = new int[] {R.id.textListItem};
-        mCursor = mContent.query(DBHelperProvider.CONTENT_URI, projection, null, null, null);
+        final String[] projection = new String[] {CATEGORY_NAME};
+        mCursor = mContent.query(CONTENT_URI, projection, null, null, null);
         mCursor.moveToFirst();
 
         do {
@@ -53,6 +57,7 @@ public class StartCategoryQuiz extends Activity implements AdapterView.OnItemCli
         ListView categoryList = (ListView) findViewById(R.id.list_view_category);
         categoryList.setAdapter(categoryAdapter);
         categoryList.setOnItemClickListener(this);
+
     }
 
     @Override
