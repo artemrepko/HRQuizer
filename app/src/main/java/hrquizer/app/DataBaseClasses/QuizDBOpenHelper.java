@@ -26,6 +26,8 @@ public class QuizDBOpenHelper extends SQLiteOpenHelper implements BaseColumns {
 
     public static int QUIZ_COUNT = 2;
 
+    public int code_count=0;
+
     public QuizDBOpenHelper(Context context) {
         super(context, DB_NAME, null, VERSION);
     }
@@ -38,9 +40,10 @@ public class QuizDBOpenHelper extends SQLiteOpenHelper implements BaseColumns {
             for (int j = 0; j < QUIZ_COUNT; j++) {
                 ContentValues values = new ContentValues();
                 values.put(QUIZ_NAME, "Quiz " + Integer.toString(j + 1) + " Category " + Integer.toString(i+1));
-                values.put(CODE, i+j);
+                values.put(CODE, code_count);
                 values.put(CATEGORY_ID, i);
                 db.insert(QUIZERS, null, values);
+                code_count++;
             }
         }
     }

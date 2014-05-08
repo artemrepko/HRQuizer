@@ -38,11 +38,15 @@ public class StartAsk extends Activity implements View.OnClickListener {
         ((RadioButton) findViewById(R.id.radio1)).setOnClickListener((View.OnClickListener) this);
         ((RadioButton) findViewById(R.id.radio2)).setOnClickListener((View.OnClickListener) this);
         ((RadioButton) findViewById(R.id.radio3)).setOnClickListener((View.OnClickListener) this);
-        ((TextView) findViewById(R.id.textAsk)).setText(MainMenu.workquiz.getAsk(askNumber).getQuestion());
-        ((RadioButton) findViewById(R.id.radio1)).setText(MainMenu.workquiz.getAsk(askNumber).getAnswer(0).getText()+Integer.toString(askNumber+1));
-        ((RadioButton) findViewById(R.id.radio2)).setText(MainMenu.workquiz.getAsk(askNumber).getAnswer(1).getText()+Integer.toString(askNumber+1));
-        ((RadioButton) findViewById(R.id.radio3)).setText(MainMenu.workquiz.getAsk(askNumber).getAnswer(2).getText()+Integer.toString(askNumber+1));
-
+        try {
+            ((TextView) findViewById(R.id.textAsk)).setText(MainMenu.workquiz.getAsk(askNumber).getQuestion());
+            ((RadioButton) findViewById(R.id.radio1)).setText(MainMenu.workquiz.getAsk(askNumber).getAnswer(0).getText() + Integer.toString(askNumber + 1));
+            ((RadioButton) findViewById(R.id.radio2)).setText(MainMenu.workquiz.getAsk(askNumber).getAnswer(1).getText() + Integer.toString(askNumber + 1));
+            ((RadioButton) findViewById(R.id.radio3)).setText(MainMenu.workquiz.getAsk(askNumber).getAnswer(2).getText() + Integer.toString(askNumber + 1));
+        } catch (Exception e) {
+            Toast.makeText(this, "Опроса с данным кодом не существует", Toast.LENGTH_SHORT).show();
+            finish();
+        }
         buttonNext = (Button) findViewById(R.id.buttonNext);
 
     }
