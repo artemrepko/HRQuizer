@@ -37,7 +37,7 @@ public class StartQuizer extends Activity implements AdapterView.OnItemClickList
 
     private ArrayList<Quiz> quizArrayList = new ArrayList<Quiz>();
     private ArrayList<Ask> askArrayList = new ArrayList<Ask>();
-    private ArrayList<Answer> answerArrayList = new ArrayList<Answer>();
+    //private ArrayList<Answer> answerArrayList = new ArrayList<Answer>();
 
     public String categoryName;
     public int categoryId;
@@ -98,13 +98,12 @@ public class StartQuizer extends Activity implements AdapterView.OnItemClickList
         cursor.moveToFirst();
 
         do {
-            answerArrayList.clear();
+            ArrayList<Answer> answerArrayList = new ArrayList<Answer>();
             answerArrayList.add(new Answer(cursor.getString(2), Integer.parseInt(cursor.getString(5))));
-            answerArrayList.add(new Answer(cursor.getString(3), cursor.getInt(6)));
-            answerArrayList.add(new Answer(cursor.getString(4), cursor.getInt(7)));
+            answerArrayList.add(new Answer(cursor.getString(3), Integer.parseInt(cursor.getString(6))));
+            answerArrayList.add(new Answer(cursor.getString(4), Integer.parseInt(cursor.getString(7))));
             askArrayList.add(new Ask(cursor.getString(1), answerArrayList));
-            Log.e("MY_LOG", cursor.getString(1) + cursor.getString(2) + cursor.getString(3) + cursor.getString(4) + cursor.getString(7) + cursor.getString(8));
-            Log.e("ASK_READ", "Start!!!");
+            Log.e("MY_LOG", cursor.getString(0) + cursor.getString(1) + cursor.getString(2) + cursor.getString(3) + cursor.getString(4) + cursor.getString(7) + cursor.getString(8));
             cursor.moveToNext();
         } while (!cursor.isAfterLast());
         cursor.close();
