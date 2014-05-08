@@ -24,6 +24,8 @@ public class QuizDBOpenHelper extends SQLiteOpenHelper implements BaseColumns {
 
     public static String QUIZ_DB_CREATED = "CREATE TABLE Quizers (_id INTEGER PRIMARY KEY AUTOINCREMENT, quizname TEXT, code INTEGER, category_id INTEGER, user_id INTEGER, typereport TEXT);";
 
+    public static int QUIZ_COUNT = 2;
+
     public QuizDBOpenHelper(Context context) {
         super(context, DB_NAME, null, VERSION);
     }
@@ -32,8 +34,8 @@ public class QuizDBOpenHelper extends SQLiteOpenHelper implements BaseColumns {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(QUIZ_DB_CREATED);
 
-        for (int i=0; i<5; i++) {
-            for (int j = 0; j < 3; j++) {
+        for (int i=0; i<CategoryDBOpenHelper.CATEGORY_COUNT; i++) {
+            for (int j = 0; j < QUIZ_COUNT; j++) {
                 ContentValues values = new ContentValues();
                 values.put(QUIZ_NAME, "Quiz " + Integer.toString(j + 1) + " Category " + Integer.toString(i+1));
                 values.put(CODE, i+j);

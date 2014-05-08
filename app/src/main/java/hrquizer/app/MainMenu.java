@@ -19,18 +19,18 @@ public class MainMenu extends Activity {
     private final int IDD_EXIT = 0;
 
     static public Quiz workquiz = new Quiz();
-    public Answer answer1 = new Answer("Answer 1",0);
+    /*public Answer answer1 = new Answer("Answer 1",0);
     public Answer answer2 = new Answer("Answer 2",1);
     public Answer answer3 = new Answer("Answer 3",2);
     public ArrayList<Answer> answerArrayList = new ArrayList<Answer>();
-    public ArrayList<Ask> askArrayList = new ArrayList<Ask>();
+    public ArrayList<Ask> askArrayList = new ArrayList<Ask>();*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
 
-        workquiz.setName("Quiz 1");
+        /*workquiz.setName("Quiz 1");
         workquiz.setId(1);
 
         for (int i=0; i<5; i++) {
@@ -44,7 +44,7 @@ public class MainMenu extends Activity {
             askArrayList.add(ask);
         }
 
-        workquiz.setAsks(askArrayList);
+        workquiz.setAsks(askArrayList);*/
 
     }
 

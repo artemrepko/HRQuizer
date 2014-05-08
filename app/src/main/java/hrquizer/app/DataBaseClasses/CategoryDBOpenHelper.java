@@ -20,6 +20,8 @@ public class CategoryDBOpenHelper extends SQLiteOpenHelper implements BaseColumn
 
     public static String CATEGORY_DB_CREATED = "CREATE TABLE Categories (_id INTEGER PRIMARY KEY AUTOINCREMENT, categoryname TEXT);";
 
+    public static int CATEGORY_COUNT = 2;
+
     public CategoryDBOpenHelper(Context context) {
         super(context, DB_NAME, null, VERSION);
     }
@@ -30,7 +32,7 @@ public class CategoryDBOpenHelper extends SQLiteOpenHelper implements BaseColumn
 
         ContentValues values = new ContentValues();
 
-        for (int i=0; i<5; i++) {
+        for (int i=0; i<CATEGORY_COUNT; i++) {
             values.put(CATEGORY_NAME, "Category " + Integer.toString(i+1));
             db.insert(CATEGORIES, CATEGORY_NAME, values);
         }

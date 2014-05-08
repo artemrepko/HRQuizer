@@ -39,9 +39,9 @@ public class StartAsk extends Activity implements View.OnClickListener {
         ((RadioButton) findViewById(R.id.radio2)).setOnClickListener((View.OnClickListener) this);
         ((RadioButton) findViewById(R.id.radio3)).setOnClickListener((View.OnClickListener) this);
         ((TextView) findViewById(R.id.textAsk)).setText(MainMenu.workquiz.getAsk(askNumber).getQuestion());
-        ((RadioButton) findViewById(R.id.radio1)).setText(MainMenu.workquiz.getAsk(askNumber).getAnswer(0).getText());
-        ((RadioButton) findViewById(R.id.radio2)).setText(MainMenu.workquiz.getAsk(askNumber).getAnswer(1).getText());
-        ((RadioButton) findViewById(R.id.radio3)).setText(MainMenu.workquiz.getAsk(askNumber).getAnswer(2).getText());
+        ((RadioButton) findViewById(R.id.radio1)).setText(MainMenu.workquiz.getAsk(askNumber).getAnswer(0).getText()+Integer.toString(askNumber+1));
+        ((RadioButton) findViewById(R.id.radio2)).setText(MainMenu.workquiz.getAsk(askNumber).getAnswer(1).getText()+Integer.toString(askNumber+1));
+        ((RadioButton) findViewById(R.id.radio3)).setText(MainMenu.workquiz.getAsk(askNumber).getAnswer(2).getText()+Integer.toString(askNumber+1));
 
         buttonNext = (Button) findViewById(R.id.buttonNext);
 
